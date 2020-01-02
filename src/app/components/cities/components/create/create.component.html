@@ -1,0 +1,50 @@
+<!-- go to previous url -->
+<app-back></app-back>
+
+
+<form (ngSubmit)="addCity()" [formGroup]="form">
+    <!-- Name -->
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+        required
+        formControlName="Name"
+        type="text" #name id="name"  class="form-control">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <!-- Country Code -->
+    <div class="form-group">
+        <label for="countryCode">Country Code</label>
+        <input 
+        required
+        formControlName="CountryCode"
+        type="text" #countryCode id="countryCode" class="form-control">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <!-- District -->
+    <div class="form-group">
+        <label for="district">District</label>
+        <input 
+        required
+        formControlName="District"
+        type="text" #district id="district" class="form-control">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <!-- Population -->
+    <div class="form-group">
+        <label for="population">Population</label>
+        <input 
+        required
+        formControlName="Population"
+        type="number" #population id="population" class="form-control">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary" [disabled]="!formValid">
+        Create
+    </button>
+</form>

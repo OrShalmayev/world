@@ -1,0 +1,52 @@
+<!-- go to previous url -->
+<app-back></app-back>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+
+<!-- Title -->
+<h1 class="text-center display-3 my-3 text-secondary">All Cities</h1>
+<!-- Create city -->
+<div class="add-city float-right my-2">
+    <a routerLink="/cities/create" class="btn btn-primary">Create City</a>
+</div>
+
+<!-- Cities Table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">CountryCode</th>
+            <th scope="col">District</th>
+            <th scope="col">Population</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cities$ |  paginate: { itemsPerPage: 10, currentPage: p }">
+            <th >{{c.ID}}</th>
+            <td>{{c.Name}}</td>
+            <td>{{c.CountryCode}}</td>
+            <td>{{c.District}}</td>
+            <td>{{c.Population}}</td>
+            <td>
+                <a [routerLink]="['/cities/edit/', c.ID]" class="btn btn-outline-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <button (click)="deleteCity(c)" class="btn btn-outline-danger">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>
